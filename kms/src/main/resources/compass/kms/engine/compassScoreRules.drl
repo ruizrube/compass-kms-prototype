@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package compass.kms.engine;
+package compass.kms.recommender;
     dialect "java"
 
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;

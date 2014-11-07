@@ -1,7 +1,7 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,13 +9,15 @@ import java.util.Date;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
-import compass.domain.AssistanceRequest;
-import compass.domain.AttendancePriority;
-import compass.domain.Beneficiary;
-import compass.domain.PlannedAssistance;
-import compass.domain.RequestStatus;
-import compass.domain.Service;
-import compass.domain.Volunteer;
+import compass.kms.kb.domain.AssistanceRequest;
+import compass.kms.kb.domain.AttendancePriority;
+import compass.kms.kb.domain.Beneficiary;
+import compass.kms.kb.domain.PlannedAssistance;
+import compass.kms.kb.domain.RequestStatus;
+import compass.kms.kb.domain.Service;
+import compass.kms.kb.domain.Volunteer;
+import compass.kms.recommender.helpers.AssistanceDifficultyComparator;
+import compass.kms.recommender.helpers.VolunteerStrengthComparator;
 
 /**
  * @author ivan
@@ -48,7 +50,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getCreationDate()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getCreationDate()
 	 */
 	public Date getCreationDate() {
 		return request.getCreationDate();
@@ -56,7 +58,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param creationDate
-	 * @see compass.domain.AssistanceRequest#setCreationDate(java.util.Date)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setCreationDate(java.util.Date)
 	 */
 	public void setCreationDate(Date creationDate) {
 		request.setCreationDate(creationDate);
@@ -64,7 +66,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.PlannedAssistance#getAssistanceDate()
+	 * @see compass.kms.kb.domain.PlannedAssistance#getAssistanceDate()
 	 */
 	//@PlanningVariable(nullable = true,valueRangeProviderRefs = {"dateRange"})
 	public Date getAssistanceDate() {
@@ -73,7 +75,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param assistanceDate
-	 * @see compass.domain.PlannedAssistance#setAssistanceDate(java.util.Date)
+	 * @see compass.kms.kb.domain.PlannedAssistance#setAssistanceDate(java.util.Date)
 	 */
 	public void setAssistanceDate(Date assistanceDate) {
 		assistance.setAssitanceDate(assistanceDate);
@@ -81,7 +83,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.PlannedAssistance#getFeedback()
+	 * @see compass.kms.kb.domain.PlannedAssistance#getFeedback()
 	 */
 	public int getFeedback() {
 		return assistance.getFeedback();
@@ -89,7 +91,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param feedback
-	 * @see compass.domain.PlannedAssistance#setFeedback(int)
+	 * @see compass.kms.kb.domain.PlannedAssistance#setFeedback(int)
 	 */
 	public void setFeedback(int feedback) {
 		assistance.setFeedback(feedback);
@@ -97,7 +99,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.PlannedAssistance#getComments()
+	 * @see compass.kms.kb.domain.PlannedAssistance#getComments()
 	 */
 	public String getComments() {
 		return assistance.getComments();
@@ -105,7 +107,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param comments
-	 * @see compass.domain.PlannedAssistance#setComments(java.lang.String)
+	 * @see compass.kms.kb.domain.PlannedAssistance#setComments(java.lang.String)
 	 */
 	public void setComments(String comments) {
 		assistance.setComments(comments);
@@ -113,7 +115,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return	
-	 * @see compass.domain.PlannedAssistance#getVoluntee()
+	 * @see compass.kms.kb.domain.PlannedAssistance#getVoluntee()
 	 */
     @PlanningVariable(valueRangeProviderRefs = {"volunteerRange"},strengthComparatorClass = VolunteerStrengthComparator.class, nullable = true)
 	public Volunteer getVoluntee() {
@@ -122,7 +124,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param voluntee
-	 * @see compass.domain.PlannedAssistance#setVoluntee(compass.domain.Volunteer)
+	 * @see compass.kms.kb.domain.PlannedAssistance#setVoluntee(compass.kms.kb.domain.Volunteer)
 	 */
 	public void setVoluntee(Volunteer voluntee) {
 		assistance.setVoluntee(voluntee);
@@ -130,7 +132,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getPriority()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getPriority()
 	 */
 	public AttendancePriority getPriority() {
 		return request.getPriority();
@@ -138,7 +140,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param priority
-	 * @see compass.domain.AssistanceRequest#setPriority(compass.domain.AttendancePriority)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setPriority(compass.kms.kb.domain.AttendancePriority)
 	 */
 	public void setPriority(AttendancePriority priority) {
 		request.setPriority(priority);
@@ -146,7 +148,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getState()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getState()
 	 */
 	public RequestStatus getState() {
 		return request.getState();
@@ -154,7 +156,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param state
-	 * @see compass.domain.AssistanceRequest#setState(compass.domain.RequestStatus)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setState(compass.kms.kb.domain.RequestStatus)
 	 */
 	public void setState(RequestStatus state) {
 		request.setState(state);
@@ -162,7 +164,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getDesiredDate()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getDesiredDate()
 	 */
 	public Date getDesiredDate() {
 		return request.getDesiredDate();
@@ -170,7 +172,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param desiredDate
-	 * @see compass.domain.AssistanceRequest#setDesiredDate(java.util.Date)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setDesiredDate(java.util.Date)
 	 */
 	public void setDesiredDate(Date desiredDate) {
 		request.setDesiredDate(desiredDate);
@@ -178,7 +180,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getDesiredPlaceLatitude()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getDesiredPlaceLatitude()
 	 */
 	public long getDesiredPlaceLatitude() {
 		return request.getDesiredPlaceLatitude();
@@ -186,7 +188,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param desiredPlaceLatitude
-	 * @see compass.domain.AssistanceRequest#setDesiredPlaceLatitude(long)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setDesiredPlaceLatitude(long)
 	 */
 	public void setDesiredPlaceLatitude(long desiredPlaceLatitude) {
 		request.setDesiredPlaceLatitude(desiredPlaceLatitude);
@@ -194,7 +196,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getDesiredPlaceLongitude()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getDesiredPlaceLongitude()
 	 */
 	public long getDesiredPlaceLongitude() {
 		return request.getDesiredPlaceLongitude();
@@ -202,7 +204,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param desiredPlaceLongitude
-	 * @see compass.domain.AssistanceRequest#setDesiredPlaceLongitude(long)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setDesiredPlaceLongitude(long)
 	 */
 	public void setDesiredPlaceLongitude(long desiredPlaceLongitude) {
 		request.setDesiredPlaceLongitude(desiredPlaceLongitude);
@@ -210,7 +212,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getService()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getService()
 	 */
 	public Service getService() {
 		return request.getService();
@@ -218,7 +220,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param service
-	 * @see compass.domain.AssistanceRequest#setService(compass.domain.Service)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setService(compass.kms.kb.domain.Service)
 	 */
 	public void setService(Service service) {
 		request.setService(service);
@@ -226,7 +228,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @return
-	 * @see compass.domain.AssistanceRequest#getBeneficiary()
+	 * @see compass.kms.kb.domain.AssistanceRequest#getBeneficiary()
 	 */
 	public Beneficiary getBeneficiary() {
 		return request.getBeneficiary();
@@ -234,7 +236,7 @@ public class SimpleAssistance implements Serializable{
 
 	/**
 	 * @param beneficiary
-	 * @see compass.domain.AssistanceRequest#setBeneficiary(compass.domain.Beneficiary)
+	 * @see compass.kms.kb.domain.AssistanceRequest#setBeneficiary(compass.kms.kb.domain.Beneficiary)
 	 */
 	public void setBeneficiary(Beneficiary beneficiary) {
 		request.setBeneficiary(beneficiary);

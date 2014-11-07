@@ -1,4 +1,4 @@
-package compass.domain;
+package compass.kms.kb.domain;
 
 
 /**
@@ -7,7 +7,7 @@ package compass.domain;
  * @generated
  */
 
-public class Service
+public class Beneficiary
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -18,6 +18,15 @@ public class Service
 	
 	public String name;
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public Beneficiary(){
+		super();
+	}
+
 	/**
 	 * @return the name
 	 */
@@ -32,13 +41,8 @@ public class Service
 		this.name = name;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Service(){
-		super();
+	public String toString(){
+		return name;
 	}
 
 }

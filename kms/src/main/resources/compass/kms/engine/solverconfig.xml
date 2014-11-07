@@ -3,8 +3,8 @@
   <!--<environmentMode>FAST_ASSERT</environmentMode>-->
 
   <!-- Domain model configuration -->
-  <solutionClass>compass.kms.engine.AssistanceSchedulingPlan</solutionClass>
-  <entityClass>compass.kms.engine.SimpleAssistance</entityClass>
+  <solutionClass>compass.kms.recommender.AssistanceSchedulingPlan</solutionClass>
+  <entityClass>compass.kms.recommender.SimpleAssistance</entityClass>
 
   <!-- Score configuration -->
   <scoreDirectorFactory>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender;
 
 import org.optaplanner.core.api.solver.event.BestSolutionChangedEvent;
 import org.optaplanner.core.api.solver.event.SolverEventListener;

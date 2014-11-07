@@ -1,4 +1,4 @@
-package compass.domain;
+package compass.kms.kb.domain;
 import java.util.Date;
 
 
