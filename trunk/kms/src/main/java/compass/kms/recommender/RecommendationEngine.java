@@ -1,18 +1,19 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender;
 
 import java.util.List;
 
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 
-import compass.domain.Beneficiary;
-import compass.domain.Volunteer;
-import compass.kms.kb.AssistanceDAO;
-import compass.kms.kb.BeneficiaryDAO;
-import compass.kms.kb.VolunteerDAO;
+import compass.kms.kb.dao.AssistanceDAO;
+import compass.kms.kb.dao.BeneficiaryDAO;
+import compass.kms.kb.dao.VolunteerDAO;
+import compass.kms.kb.domain.Beneficiary;
+import compass.kms.kb.domain.Volunteer;
+import compass.kms.recommender.helpers.VolunteerChange;
 
 /**
  * @author ivan

@@ -1,4 +1,4 @@
-package compass.domain;
+package compass.kms.kb.domain;
 
 /**
  * <!-- begin-user-doc -->

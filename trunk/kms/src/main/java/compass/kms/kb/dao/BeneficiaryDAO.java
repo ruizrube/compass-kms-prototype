@@ -1,13 +1,13 @@
 /**
  * 
  */
-package compass.kms.kb;
+package compass.kms.kb.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import compass.domain.Beneficiary;
-import compass.domain.Volunteer;
+import compass.kms.kb.domain.Beneficiary;
+import compass.kms.kb.domain.Volunteer;
 
 /**
  * @author ivan

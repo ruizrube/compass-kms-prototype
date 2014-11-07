@@ -1,13 +1,14 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import compass.domain.Volunteer;
+import compass.kms.kb.domain.Volunteer;
+import compass.kms.recommender.RecommendationEngine;
 
 /**
  * @author ivan

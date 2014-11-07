@@ -1,11 +1,13 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender.helpers;
 
 import java.util.Comparator;
 
 import org.apache.commons.lang.builder.CompareToBuilder;
+
+import compass.kms.recommender.SimpleAssistance;
 
 /**
  * @author ivan

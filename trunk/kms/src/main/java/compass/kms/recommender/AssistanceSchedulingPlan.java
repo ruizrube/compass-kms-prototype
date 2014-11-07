@@ -1,7 +1,7 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,8 +15,8 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeFactory;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-import compass.domain.Beneficiary;
-import compass.domain.Volunteer;
+import compass.kms.kb.domain.Beneficiary;
+import compass.kms.kb.domain.Volunteer;
 
 /**
  * @author ivan

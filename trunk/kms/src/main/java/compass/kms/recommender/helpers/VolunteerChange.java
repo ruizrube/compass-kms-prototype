@@ -1,13 +1,15 @@
 /**
  * 
  */
-package compass.kms.engine;
+package compass.kms.recommender.helpers;
 
 import org.apache.commons.lang.ObjectUtils;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 import org.optaplanner.core.impl.solver.ProblemFactChange;
 
-import compass.domain.Volunteer;
+import compass.kms.kb.domain.Volunteer;
+import compass.kms.recommender.AssistanceSchedulingPlan;
+import compass.kms.recommender.SimpleAssistance;
 
 /**
  * @author ivan
