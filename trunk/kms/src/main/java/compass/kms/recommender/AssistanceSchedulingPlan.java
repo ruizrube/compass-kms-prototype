@@ -82,7 +82,7 @@ public class AssistanceSchedulingPlan implements Solution<HardSoftScore> {
 	@ValueRangeProvider(id = "dayRange")
     public CountableValueRange<Integer> getDaysRange() {
 
-        return ValueRangeFactory.createIntValueRange(0, 30);
+        return ValueRangeFactory.createIntValueRange(1, 30);
 
     }
 	/**
@@ -115,8 +115,9 @@ public class AssistanceSchedulingPlan implements Solution<HardSoftScore> {
 	
 	public String toString(){
 		StringBuffer sb=new StringBuffer();
+		sb.append("This solution has the following score: " + score.getHardScore() + " (hard) " + score.getSoftScore() + "(soft)\n");
 		for(SimpleAssistance assistence:this.assistences){
-			sb.append(assistence).append("\n");
+			sb.append(assistence).append("\n  ");
 		}
 		return sb.toString();
 		

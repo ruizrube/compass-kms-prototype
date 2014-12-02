@@ -244,9 +244,9 @@ public class SimpleAssistance implements Serializable{
 	
 	public String toString(){
 		StringBuffer sb=new StringBuffer();
-		sb.append("Beneficiary:").append(this.getBeneficiary());
-		sb.append("Volunteer:").append(this.getVoluntee());
-		sb.append("Date:").append(this.getDay());
+		sb.append("Beneficiary: [").append(this.getBeneficiary()+"]");
+		sb.append("- Volunteer: [").append(this.getVoluntee()+"]");
+		sb.append("- Date: [").append(this.getDay()+"]");
 		
 		return sb.toString();
 		
