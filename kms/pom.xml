@@ -2,36 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>model</artifactId>
-	<name>model</name>
-	<groupId>model</groupId>
+	<artifactId>kms</artifactId>
+	<name>kms</name>
+	<groupId>compass</groupId>
 	<!-- * Start of user code for project -->
 	<packaging>jar</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<properties>
 		<java-version>1.7</java-version>
 	</properties>
-	<!-- * End of user code for project -->
-	<build>
-		<plugins>
-			<!-- * Start of user code for plugins -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<compilerArgument>-Xlint:all</compilerArgument>
-					<showWarnings>true</showWarnings>
-					<showDeprecation>true</showDeprecation>
-				</configuration>
-			</plugin>
-			<!-- * End of user code for plugins -->
-		</plugins>
-		<!-- * Start of user code for build -->
-		<!-- * End of user code for build -->
-	</build>
+	
 	<dependencies>
 		<!-- Internal dependencies -->
 		<dependency>
@@ -55,4 +35,22 @@
 			<version>1.0.9</version>
 		</dependency>
 	</dependencies>
+		<build>
+		<finalName>kms</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat6-maven-plugin</artifactId>
+					<version>2.3-SNAPSHOT</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.3-SNAPSHOT</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
 </project>
